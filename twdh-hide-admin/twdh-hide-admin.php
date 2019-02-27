@@ -8,7 +8,7 @@
  * Author URI: http://www.thewebdesignhub.com
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: sitewide-notice-twdh
+ * Text Domain: twdh-hide-admin
  *
  * TWDH Hide Admin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Sitewide Notice TWDH. If not, see http://www.gnu.org/licenses/gpl.html
+ * along with TWDH Hide Admin. If not, see http://www.gnu.org/licenses/gpl.html
  *
 **/
 
@@ -33,3 +33,19 @@ defined( 'ABSPATH' ) or exit;
  */
 
 include 'twdh-hide-admin-settings.php'; //all admin code can be found in here.
+
+/**
+ * Activation Hook
+ */
+
+register_activation_hook(__FILE__, "twdhha_install");
+
+/*
+ * Install Function
+ */
+
+function twdhha_install() {
+
+  
+
+}
