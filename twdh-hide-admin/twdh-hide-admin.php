@@ -3,7 +3,7 @@
  * Plugin Name: TWDH Hide Admin
  * Description: Prevents non-admin users from accessing wp-admin
  * Plugin URI: https://www.thewebdesignhub.com
- * Version: 1.0.2
+ * Version: 1.0.0
  * Author: The Web Design Hub
  * Author URI: http://www.thewebdesignhub.com
  * License: GPL2 or later
@@ -26,33 +26,35 @@
 **/
 
 
-defined( 'ABSPATH' ) or exit;
+defined('ABSPATH') or exit;
 
-/**
- * INCLUDES
- */
+class TWDHHideAdmin
+{
 
-include 'twdh-hide-admin-settings.php'; //all admin code can be found in here.
+  __construct() {
 
-/**
- * Activation Hook
- */
+  }
 
-register_activation_hook(__FILE__, "twdhha_install");
+  function activate() {
 
-/*
- * Install Function
- */
+  }
 
-function twdhha_install() {
+  function deactivate() {
 
-  add_action( 'admin_menu', 'twdhha_add_settings_page' );
+  }
 
+  function uninstall() {
+    
+  }
 
 }
 
-function twdhha_add_settings_page() {
 
-  add_menu_page('TWDH Hide Admin', 'Hide Admin', 'manage_options', 'twdh_hide_admin', 'twdhha_settings', 'dashicons-lock', 110 );
 
+if (class_exists('TWDHHideAdmin')) {
+  $twdhha = new TWDHHideAdmin();
 }
+
+register_activation_hook(__FILE__, array($twdhha, 'activate'));
+
+register_deactivation_hook(__FILE__, array($twdhha, 'deactivate'));

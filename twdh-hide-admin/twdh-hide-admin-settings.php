@@ -5,3 +5,5 @@
  */
 
 defined ( 'ABSPATH' ) or exit;
+
+?>
