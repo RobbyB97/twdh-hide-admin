@@ -15,7 +15,7 @@
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  *
- * Sitewide Notice TWDH is distributed in the hope that it will be useful,
+ * TWDH Hide Admin is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
@@ -46,6 +46,13 @@ register_activation_hook(__FILE__, "twdhha_install");
 
 function twdhha_install() {
 
-  
+  add_action( 'admin_menu', 'twdhha_add_settings_page' );
+
+
+}
+
+function twdhha_add_settings_page() {
+
+  add_menu_page('TWDH Hide Admin', 'Hide Admin', 'manage_options', 'twdh_hide_admin', 'twdhha_settings', 'dashicons-lock', 110 );
 
 }
