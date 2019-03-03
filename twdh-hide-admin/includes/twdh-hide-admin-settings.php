@@ -6,4 +6,9 @@
 
 defined ( 'ABSPATH' ) or exit;
 
-?>
+class TWDHHideAdminSettings
+{
+
+  
+
+}

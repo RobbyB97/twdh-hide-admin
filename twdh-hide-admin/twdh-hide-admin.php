@@ -35,7 +35,7 @@ class TWDHHideAdmin
   }
 
   function activate() {
-
+    flush_rewrite_rules();
   }
 
   function deactivate() {
@@ -43,8 +43,10 @@ class TWDHHideAdmin
   }
 
   function post_type() {
-    register_post_type('twdhha', ['public' => 'false']);
+    register_post_type('twdhha', ['public' => false]);
   }
+
+
 }
 
 if (class_exists('TWDHHideAdmin')) {
