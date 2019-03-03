@@ -30,9 +30,8 @@ defined('ABSPATH') or exit;
 
 class TWDHHideAdmin
 {
-
-  __construct() {
-
+  function __construct() {
+    add_action('init', array($this, 'post_type'));
   }
 
   function activate() {
@@ -43,17 +42,16 @@ class TWDHHideAdmin
 
   }
 
-  function uninstall() {
-    
+  function post_type() {
+    register_post_type('twdhha', ['public' => 'false']);
   }
-
 }
-
-
 
 if (class_exists('TWDHHideAdmin')) {
   $twdhha = new TWDHHideAdmin();
 }
+
+
 
 register_activation_hook(__FILE__, array($twdhha, 'activate'));
 
