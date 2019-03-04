@@ -26,12 +26,21 @@
 **/
 
 
-defined('ABSPATH') or exit;
+defined('ABSPATH') or die;
 
 class TWDHHideAdmin
 {
+  public $twdhha_dir;
+  public $twdhha_settings;
+
   function __construct() {
     add_action('init', array($this, 'post_type'));
+    add_action('admin_menu', array($this, 'add_admin_menu'));
+    $this->twdhha_dir = plugin_dir_path(__FILE__);
+    $twdhha_settings = get_option('twdhha_options');
+    if(empty($twdhha_settings)) {
+      $this->set_options();
+    }
   }
 
   function activate() {
@@ -40,6 +49,21 @@ class TWDHHideAdmin
 
   function deactivate() {
 
+  }
+
+  function add_admin_menu() {
+    add_menu_page('TWDH Hide Admin', 'Hide Admin', 'manage_options', 'twdhha', array($this, 'render_admin'), 'dashicons-lock', 110);
+  }
+
+  function render_admin() {
+    require_once $twdhha_dir.'includes/twdh-hide-admin-settings.php';
+  }
+
+  function set_options() {
+    $twdhha_settings = array();
+    $twdhha_settings['active'] = '1';
+    $twdhha_settings['link'] = 'https://www.thewebdesignhub.com';
+    update_option('twdhha_options', $twdhha_settings);
   }
 
   function post_type() {
@@ -54,6 +78,8 @@ if (class_exists('TWDHHideAdmin')) {
 }
 
 
+
+// Hooks
 
 register_activation_hook(__FILE__, array($twdhha, 'activate'));
 
