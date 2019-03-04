@@ -3,7 +3,7 @@
  *  Inject this script into wp-admin when user
  *  is not logged in as an admin.
  */
-
+  $settings = get_option('twdhha_options');
 ?>
 <html>
   <body>
