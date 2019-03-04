@@ -34,7 +34,6 @@ class TWDHHideAdmin
   public $twdhha_settings;
 
   function __construct() {
-    add_action('init', array($this, 'post_type'));
     add_action('admin_menu', array($this, 'add_admin_menu'));
     $this->twdhha_dir = plugin_dir_path(__FILE__);
     $twdhha_settings = get_option('twdhha_options');
@@ -48,7 +47,7 @@ class TWDHHideAdmin
   }
 
   function deactivate() {
-
+    
   }
 
   function add_admin_menu() {
@@ -65,11 +64,6 @@ class TWDHHideAdmin
     $twdhha_settings['link'] = 'https://www.thewebdesignhub.com';
     update_option('twdhha_options', $twdhha_settings);
   }
-
-  function post_type() {
-    register_post_type('twdhha', ['public' => false]);
-  }
-
 
 }
 
