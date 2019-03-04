@@ -38,23 +38,32 @@ if (isset($_POST['submit'])) {
       <hr>
       <form action="" method="POST">
         <table class="form-table">
+
           <tr>
             <th scope="row" width="50%">
-
+              <?php _e('Activate', 'twdh-hide-admin'); ?>
             </th>
             <td width="50%">
-
+              <input type="checkbox" name="active" <?php if (isset($settings['active']) && ! empty($settings['active'])) {echo 'checked';} ?> />
             </td>
           </tr>
 
-          <tr scope="row">
+          <tr>
             <th scope="row" width="50%">
-
+              <?php _e('Redirect Link:', 'twdh-hide-admin'); ?>
             </th>
             <td width="50%">
 
             </td>
           </tr>
+
+          <tr>
+            <input type="hidden" name="_nonce" value="<?php echo wp_create_nonce('twdhha_submit') ?>">
+            <th scope-"row">
+              <input type="submit" name="submit" class="button-primary" value="<?php _e( 'Save Settings', 'twdh-hide-admin' ); ?>"/>
+            </th>
+          </tr>
+
         </table>
       </form>
 
