@@ -53,7 +53,9 @@ if (isset($_POST['submit'])) {
               <?php _e('Redirect Link:', 'twdh-hide-admin'); ?>
             </th>
             <td width="50%">
-
+              <textarea name="link" cols="40" rows="1">
+                <?php echo esc_url_raw($settings['link']); ?>
+              </textarea>
             </td>
           </tr>
 
