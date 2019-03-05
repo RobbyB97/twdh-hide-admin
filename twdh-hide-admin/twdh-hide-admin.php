@@ -35,6 +35,7 @@ class TWDHHideAdmin
 
   function __construct() {
     add_action('admin_menu', array($this, 'add_admin_menu'));
+    require_once $twdhha_dir.'includes/twdh-admin-hider.php';
     $this->twdhha_dir = plugin_dir_path(__FILE__);
     $twdhha_settings = get_option('twdhha_options');
     if(empty($twdhha_settings)) {
@@ -47,7 +48,7 @@ class TWDHHideAdmin
   }
 
   function deactivate() {
-    
+
   }
 
   function add_admin_menu() {
